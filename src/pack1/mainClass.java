@@ -11,7 +11,7 @@
  * I wrote it in Java, because I didn't want to spend a long time coding a slightly faster version in 
  * C++, when the time saved will be miniscule.
  * 
- * It is not entirely optimized. Although, that is not to say I havn't made any effort to.
+ * It is not entirely optimized for readability. Although, that is not to say I havn't made any effort to.
  * 
  * I made the choice to use linked list, as there were going to be an enormous amount of insertions and
  * deletions, and not so many look-ups. ArrayLists would be slower at this. How much slower? I don't 
@@ -53,7 +53,7 @@ public class mainClass {
 			catch(NumberFormatException e){
 				  System.out.println("error, please enter a number, and try again");
 			}
-			System.out.println("Please enter a length you need to cut. Type \'f\' to finish and run the optimization");
+			System.out.println("Please enter a length you need to cut. You must enter at least 2 numbers. Type \'f\' to finish and run the optimization");
 			input = scnr.nextLine();
 			
 		}

@@ -86,9 +86,9 @@ public class MinWasteFinder {
 		//Houston, we have a problem.
 		else if(inputlengths.size() == 1) {
 			returnlist.add(new LinkedList<Double>(Arrays.asList(inputlengths.get(0))));
+			return returnlist;
 		}
 		//Houston, we have a big problem!
-		
 		return null;
 		
 	}

@@ -4,43 +4,25 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-public class Begin {
+public class MinWasteFinder {
 	
-	public Begin(double prefab, LinkedList<Double> lengths) {
-		//first run a sanity check
-		
+	private Double minWaste;
+	private LinkedList<Double> leastCutList;
+	
+	public MinWasteFinder(double prefab, LinkedList<Double> lengths) {
 		
 		LinkedList<LinkedList<Double>> combos = getAllCombinationsOf(lengths);
-		LinkedList<Double> bestList = combos.get(0);
 		HashMap<LinkedList<Double>,Double> totalWastage = calculateTotalWastage(prefab, combos); 
-		
 		Double leastWaste = totalWastage.values().iterator().next();
-		LinkedList<Double> leastCutList = new LinkedList<Double>();
 		
 		for (LinkedList<Double> list : totalWastage.keySet()) {
 			double waste = totalWastage.get(list);
 			if (waste <= leastWaste) {
 				leastCutList = (LinkedList<Double>) list;
-				leastWaste=waste;
+				minWaste=waste;
 			}
 		}
 		
-//		//This is for testing purposes
-//		for (LinkedList<Double> list : totalWastage.keySet()) {
-//			for (double d : list) {
-//				System.out.print(d);
-//				System.out.print(", ");
-//			}
-//			System.out.println(" - waste: "+ totalWastage.get(list));
-//			System.out.println();
-//		}
-		
-		System.out.println("best result: ");
-		for (double d : leastCutList) {
-			System.out.print(d + ", ");
-		}
-		
-		System.out.println("Waste: " + leastWaste);
 	}
 
 
@@ -101,11 +83,11 @@ public class Begin {
 			 }
 			 return returnlist;
 		}
-		//Housten, we have a problem.
+		//Houston, we have a problem.
 		else if(inputlengths.size() == 1) {
 			returnlist.add(new LinkedList<Double>(Arrays.asList(inputlengths.get(0))));
 		}
-		//Housten, we have a big problem!
+		//Houston, we have a big problem!
 		
 		return null;
 		
@@ -117,7 +99,14 @@ public class Begin {
 		return returnlengths;
 	}
 	
-	
+	public Double getMinWaste() {
+		return minWaste;
+	}
+
+	public LinkedList<Double> getLeastCutList() {
+		return leastCutList;
+	}
+
 	
 	
 }
